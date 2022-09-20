@@ -20,6 +20,11 @@ namespace NanpaoChillerSystemV2.Protocols
             temp_min = deviceSetting.TempMin;
             temp_max1 = deviceSetting.TempMax1;
             temp_min1 = deviceSetting.TempMin1;
+            SlaveFun3 = new List<ushort>();
+            SlaveFun3.Add(Convert.ToUInt16(TempMax * 10));
+            SlaveFun3.Add(Convert.ToUInt16(TempMin * 10));
+            SlaveFun3.Add(Convert.ToUInt16(TempMax1 * 10));
+            SlaveFun3.Add(Convert.ToUInt16(TempMin1 * 10));
         }
         public override void DataReader(IModbusMaster master)
         {
@@ -32,12 +37,12 @@ namespace NanpaoChillerSystemV2.Protocols
                 {
                     temp = Convert.ToDecimal(A1[0] * 0.1F);
                     temp1 = Convert.ToDecimal(A1[1] * 0.1F);
+                    FirstReadFlag = true;
                 }
                 else
                 {
                     Temp = Convert.ToDecimal(A1[0] * 0.1F);
                     Temp1 = Convert.ToDecimal(A1[1] * 0.1F);
-                    FirstReadFlag = true;
                 }
                 LastReadTime = DateTime.Now;
                 ConnectionFlag = true;

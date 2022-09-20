@@ -24,17 +24,30 @@ namespace NanpaoChillerSystemV2.Protocols
                 ushort[] data = master.ReadInputRegisters(ID, 4106, 98);
                 if (data.Length == 98)
                 {
+                    SlaveFun4 = new List<ushort>();
                     int k = 0;
+                    SlaveFun4.Add(data[k]);
+                    SlaveFun4.Add(data[k + 1]);
                     RSV = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
+                    SlaveFun4.Add(data[k]);
+                    SlaveFun4.Add(data[k + 1]);
                     STV = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
+                    SlaveFun4.Add(data[k]);
+                    SlaveFun4.Add(data[k + 1]);
                     TRV = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     _ = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     RV = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     SV = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     TV = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     _ = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
+                    SlaveFun4.Add(data[k]);
+                    SlaveFun4.Add(data[k + 1]);
                     RA = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
+                    SlaveFun4.Add(data[k]);
+                    SlaveFun4.Add(data[k + 1]);
                     SA = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
+                    SlaveFun4.Add(data[k]);
+                    SlaveFun4.Add(data[k + 1]);
                     TA = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     _ = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     _ = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
@@ -54,6 +67,8 @@ namespace NanpaoChillerSystemV2.Protocols
                     _ = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     _ = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     _ = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
+                    SlaveFun4.Add(data[k]);
+                    SlaveFun4.Add(data[k + 1]);
                     PFE = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     RV_Angle = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     SV_Angle = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
@@ -66,6 +81,10 @@ namespace NanpaoChillerSystemV2.Protocols
                     _ = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     _ = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     _ = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
+                    SlaveFun4.Add(data[34]);//kw
+                    SlaveFun4.Add(data[35]);//kw
+                    SlaveFun4.Add(data[k]);
+                    SlaveFun4.Add(data[k + 1]);
                     KWH = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     _ = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;
                     _ = Convert.ToDecimal(Calculate.work16to754(data[k + 1], data[k])); k += 2;

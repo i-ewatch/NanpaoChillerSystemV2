@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -63,7 +64,7 @@ namespace NanpaoChillerSystemV2
                         if (processitem.MainWindowHandle.ToInt32() == 0)
                         {
                             // 重新顯示該窗體並切換到帶入到前臺
-                            formhwnd = FindWindow(null, "NanpaoChillerSystemV2");
+                            formhwnd = FindWindow(null, Assembly.GetEntryAssembly().GetName().Name);
                             ShowWindow(formhwnd, SW_RESTORE);
                             SwitchToThisWindow(formhwnd, true);
                         }

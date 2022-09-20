@@ -14,6 +14,7 @@ namespace NanpaoChillerSystemV2.Components
 {
     public partial class SlaveTCPComponent : Field4Component
     {
+        private bool FirstFlag { get; set; } = false;
         private int ChillerNum { get; set; } = 0;
         private int TRNum { get; set; } = 0;
         private int ElectricNum { get; set; } = 0;
@@ -99,11 +100,16 @@ namespace NanpaoChillerSystemV2.Components
                             case DeviceType.TR:
                                 {
                                     slave.DataStore.InputRegisters.WritePoints(Convert.ToUInt16(200 + (2 * TRNum)), item.SlaveFun4.ToArray());
+                                    if (!FirstFlag)
+                                    {
+                                        slave.DataStore.HoldingRegisters.WritePoints(Convert.ToUInt16(200 + (4 * TRNum)), item.SlaveFun3.ToArray());
+                                    }
                                     TRNum++;
                                 }
                                 break;
                         }
                     }
+                    FirstFlag = true;
                     ushort[] SlaveFun3 = slave.DataStore.HoldingRegisters.ReadPoints(200, 12);
                     var TRProtocol = AbsProtocols.Where(g => g.DeviceSetting.DeviceType == 4).ToList();
                     if (TRProtocol != null)

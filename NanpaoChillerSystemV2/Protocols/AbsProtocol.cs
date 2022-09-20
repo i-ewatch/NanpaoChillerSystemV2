@@ -11,7 +11,9 @@ namespace NanpaoChillerSystemV2.Protocols
 {
     public abstract class AbsProtocol
     {
+        public List<ushort> SlaveFun3 { get; set; } = new List<ushort>();
         public List<ushort> SlaveFun4 { get; set; } = new List<ushort>();
+        public List<bool> SlaveFun1 { get; set; } = new List<bool>();
         public List<bool> SlaveFun2 { get; set; } = new List<bool>();
         /// <summary>
         /// 資料庫方法

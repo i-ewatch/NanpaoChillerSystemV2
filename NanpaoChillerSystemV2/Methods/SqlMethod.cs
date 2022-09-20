@@ -345,7 +345,7 @@ namespace NanpaoChillerSystemV2.Methods
                                              "[GatewayIndex] INT NOT NULL DEFAULT 0," +
                                              "[DeviceIndex]         INT NOT NULL DEFAULT 0," +
                                              "[Message] NVARCHAR(150) NOT NULL DEFAULT '' " +
-                                             "CONSTRAINT[PK_TRStateLog] PRIMARY KEY CLUSTERED([GatewayIndex],[DeviceIndex],[ttime]))";
+                                             "CONSTRAINT[PK_TRStateLog] PRIMARY KEY CLUSTERED([GatewayIndex],[DeviceIndex],[ttime],[ttimen]))";
                     conn.Execute(databaseSql);
                     Thread.Sleep(10);
                     conn.Execute(electricforwebSql);
