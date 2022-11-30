@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars.Docking2010.Customization;
 using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
 using DevExpress.XtraBars.Navigation;
+using DevExpress.XtraEditors;
 using NanpaoChillerSystemV2.Components;
 using NanpaoChillerSystemV2.Configuration;
 using NanpaoChillerSystemV2.EF_Modules;
@@ -72,7 +73,7 @@ namespace NanpaoChillerSystemV2
                 }
                 #region View
                 NavigationFrame = new NavigationFrame() { Dock = System.Windows.Forms.DockStyle.Fill, Parent = panelControl1 };
-                ButtonMethod = new ButtonMethod() { navigationFrame = NavigationFrame};
+                ButtonMethod = new ButtonMethod() { navigationFrame = NavigationFrame };
                 ButtonMethod.AccordionLoad(accordionControl1, ButtonSetting);
 
                 ProtocolConnectControl protocol = new ProtocolConnectControl(AbsProtocols, DeviceSettings) { Dock = System.Windows.Forms.DockStyle.Fill };
@@ -104,14 +105,44 @@ namespace NanpaoChillerSystemV2
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            foreach (var item in Field4Components)
+            UserControl control = new UserControl() { Padding = new Padding(0, 30, 0, 20), Size = new Size(400, 200) };
+            DevExpress.XtraEditors.TextEdit textEdit = new DevExpress.XtraEditors.TextEdit() { Dock = DockStyle.Top, Size = new Size(400, 40) };
+            textEdit.Properties.Appearance.FontSizeDelta = 12;
+            textEdit.Properties.Appearance.Options.UseFont = true;
+            textEdit.Properties.Appearance.Options.UseTextOptions = true;
+            textEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            textEdit.Parent = control;
+            textEdit.Properties.UseSystemPasswordChar = true;
+            LabelControl labelControl = new LabelControl() { Dock = DockStyle.Top, Size = new Size(400, 50) };
+            labelControl.Appearance.FontSizeDelta = 18;
+            labelControl.AutoSizeMode = LabelAutoSizeMode.None;
+            labelControl.Text = "請輸入關閉軟體密碼";
+            labelControl.Appearance.Options.UseFont = true;
+            labelControl.Appearance.Options.UseTextOptions = true;
+            labelControl.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            labelControl.Parent = control;
+            SimpleButton okButton = new SimpleButton() { Dock = DockStyle.Bottom, Text = "確定", Size = new Size(400, 40) };
+            okButton.Appearance.BackColor = Color.FromArgb(80, 80, 80);
+            okButton.Appearance.FontSizeDelta = 12;
+            okButton.DialogResult = DialogResult.OK;
+            okButton.Parent = control;
+            if (FlyoutDialog.Show(FindForm(), control) == DialogResult.OK && string.Compare(textEdit.Text, "qu!t", true) == 0)
             {
-                item.MyWorkState = false;
+                foreach (var item in Field4Components)
+                {
+                    item.MyWorkState = false;
+                }
+                SlaveTCPComponent.MyWorkState = false;
+                UpDataComponent.MyWorkState = false;
+                timer1.Enabled = false;
+                Application.ExitThread();
+                this.Dispose();
+                e.Cancel = false;
             }
-            SlaveTCPComponent.MyWorkState = false;
-            UpDataComponent.MyWorkState = false;
-            timer1.Enabled = false;
-            Application.ExitThread();
+            else
+            {
+                e.Cancel = true;
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -145,6 +176,25 @@ namespace NanpaoChillerSystemV2
                 action.Commands.Add(FlyoutCommand.OK);
                 FlyoutDialog.Show(FindForm(), action);
             }
+        }
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+                this.notifyIcon1.Visible = true;
+            }
+            else
+            {
+                this.notifyIcon1.Visible = false;
+            }
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }

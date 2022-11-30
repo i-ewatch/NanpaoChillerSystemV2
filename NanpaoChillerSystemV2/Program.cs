@@ -64,7 +64,7 @@ namespace NanpaoChillerSystemV2
                         if (processitem.MainWindowHandle.ToInt32() == 0)
                         {
                             // 重新顯示該窗體並切換到帶入到前臺
-                            formhwnd = FindWindow(null, Assembly.GetEntryAssembly().GetName().Name);
+                            formhwnd = FindWindow(null, "NanpaoChillerSystemV2");
                             ShowWindow(formhwnd, SW_RESTORE);
                             SwitchToThisWindow(formhwnd, true);
                         }

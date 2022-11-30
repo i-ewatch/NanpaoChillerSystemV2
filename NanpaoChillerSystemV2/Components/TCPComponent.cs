@@ -98,9 +98,9 @@ namespace NanpaoChillerSystemV2.Components
                                 using (TcpClient client = new TcpClient(Location, Port))
                                 {
                                     master = Factory.CreateMaster(client);//建立TCP通訊
-                                    master.Transport.Retries = 0;
-                                    master.Transport.ReadTimeout = 2000;
-                                    master.Transport.WriteTimeout = 2000;
+                                    master.Transport.Retries = 3;
+                                    master.Transport.ReadTimeout = 5000;
+                                    master.Transport.WriteTimeout = 5000;
                                     item.DataReader(master);
                                     Thread.Sleep(10);
                                 };

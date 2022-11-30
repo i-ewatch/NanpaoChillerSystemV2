@@ -17,10 +17,10 @@ namespace NanpaoChillerSystemV2.Methods
         /// 
         /// </summary>
         /// <param name="UdpPort">Udp通訊埠</param>
-        //public UptoEwatchMethod(int UdpPort = 4660)
-        //{
-        //    myUdpClient = new UdpClient(UdpPort);
-        //}
+        public UptoEwatchMethod(int UdpPort = 4660)
+        {
+            myUdpClient = new UdpClient(UdpPort);
+        }
         protected static CRC16 crc16 { get; set; } = new CRC16();
         public  void scan_adioco(string tcardno, string tboardno, int[] AI, byte[] DI, byte[] DO,
                                 float rv, float sv, float tv,
@@ -117,50 +117,50 @@ namespace NanpaoChillerSystemV2.Methods
                 sendstringbyet[67] = tkvar[3];
                 sendstringbyet[68] = tkvar[2];
                 byte[] tkwh = BitConverter.GetBytes(kwh);
-                sendstringbyet[69] = tkwh[0];      //strtohex(tkwh.Substring(4, 2));電表
-                sendstringbyet[70] = tkwh[1];      //strtohex(tkwh.Substring(6, 2));
-                sendstringbyet[71] = tkwh[2];     //strtohex(tkwh.Substring(0, 2));
-                sendstringbyet[72] = tkwh[3];      //strtohex(tkwh.Substring(2, 2));    
+                sendstringbyet[69] = tkwh[1];      //strtohex(tkwh.Substring(4, 2));電表
+                sendstringbyet[70] = tkwh[0];      //strtohex(tkwh.Substring(6, 2));
+                sendstringbyet[71] = tkwh[3];     //strtohex(tkwh.Substring(0, 2));
+                sendstringbyet[72] = tkwh[2];      //strtohex(tkwh.Substring(2, 2));    
                 byte[] tkw = BitConverter.GetBytes(kw);
-                sendstringbyet[73] = tkw[0];     //strtohex(tkw.Substring(4, 2));
-                sendstringbyet[74] = tkw[1];    //strtohex(tkw.Substring(6, 2));
-                sendstringbyet[75] = tkw[2];    //strtohex(tkw.Substring(0, 2));
-                sendstringbyet[76] = tkw[3];    //strtohex(tkw.Substring(2, 2));
+                sendstringbyet[73] = tkw[1];     //strtohex(tkw.Substring(4, 2));
+                sendstringbyet[74] = tkw[0];    //strtohex(tkw.Substring(6, 2));
+                sendstringbyet[75] = tkw[3];    //strtohex(tkw.Substring(0, 2));
+                sendstringbyet[76] = tkw[2];    //strtohex(tkw.Substring(2, 2));
                 byte[] tav = BitConverter.GetBytes(rv);
-                sendstringbyet[77] = tav[0];         //outbyte[2];    //strtohex(tav.Substring(4, 2));
-                sendstringbyet[78] = tav[1];         //outbyte[3];    //strtohex(tav.Substring(6, 2));
-                sendstringbyet[79] = tav[2];         //outbyte[0];    //strtohex(tav.Substring(0, 2));
-                sendstringbyet[80] = tav[3];         //outbyte[1];    //strtohex(tav.Substring(2, 2));
+                sendstringbyet[77] = tav[1];         //outbyte[2];    //strtohex(tav.Substring(4, 2));
+                sendstringbyet[78] = tav[0];         //outbyte[3];    //strtohex(tav.Substring(6, 2));
+                sendstringbyet[79] = tav[3];         //outbyte[0];    //strtohex(tav.Substring(0, 2));
+                sendstringbyet[80] = tav[2];         //outbyte[1];    //strtohex(tav.Substring(2, 2));
                 byte[] tbv = BitConverter.GetBytes(sv);
-                sendstringbyet[81] = tbv[0];         //outbyte[7];    //strtohex(tbv.Substring(4, 2));
-                sendstringbyet[82] = tbv[1];         //outbyte[6];    //strtohex(tbv.Substring(6, 2));
-                sendstringbyet[83] = tbv[2];         //outbyte[4];    //strtohex(tbv.Substring(0, 2));
-                sendstringbyet[84] = tbv[3];         //outbyte[5];    //strtohex(tbv.Substring(2, 2));
+                sendstringbyet[81] = tbv[1];         //outbyte[7];    //strtohex(tbv.Substring(4, 2));
+                sendstringbyet[82] = tbv[0];         //outbyte[6];    //strtohex(tbv.Substring(6, 2));
+                sendstringbyet[83] = tbv[3];         //outbyte[4];    //strtohex(tbv.Substring(0, 2));
+                sendstringbyet[84] = tbv[2];         //outbyte[5];    //strtohex(tbv.Substring(2, 2));
                 byte[] tcv = BitConverter.GetBytes(tv);
-                sendstringbyet[85] = tcv[0];        //outbyte[10];    //strtohex(tcv.Substring(4, 2));
-                sendstringbyet[86] = tcv[1];           //outbyte[11];    //strtohex(tcv.Substring(6, 2));
-                sendstringbyet[87] = tcv[2];            //outbyte[8];    //strtohex(tcv.Substring(0, 2));
-                sendstringbyet[88] = tcv[3];            //outbyte[9];    //strtohex(tcv.Substring(2, 2));
+                sendstringbyet[85] = tcv[1];        //outbyte[10];    //strtohex(tcv.Substring(4, 2));
+                sendstringbyet[86] = tcv[0];           //outbyte[11];    //strtohex(tcv.Substring(6, 2));
+                sendstringbyet[87] = tcv[3];            //outbyte[8];    //strtohex(tcv.Substring(0, 2));
+                sendstringbyet[88] = tcv[2];            //outbyte[9];    //strtohex(tcv.Substring(2, 2));
                 byte[] tai = BitConverter.GetBytes(ra);
-                sendstringbyet[89] = tai[0];    //strtohex(tai.Substring(4, 2));
-                sendstringbyet[90] = tai[1];    //strtohex(tai.Substring(6, 2));
-                sendstringbyet[91] = tai[2];    //strtohex(tai.Substring(0, 2));
-                sendstringbyet[92] = tai[3];    //strtohex(tai.Substring(2, 2));
+                sendstringbyet[89] = tai[1];    //strtohex(tai.Substring(4, 2));
+                sendstringbyet[90] = tai[0];    //strtohex(tai.Substring(6, 2));
+                sendstringbyet[91] = tai[3];    //strtohex(tai.Substring(0, 2));
+                sendstringbyet[92] = tai[2];    //strtohex(tai.Substring(2, 2));
                 byte[] tbi = BitConverter.GetBytes(sa);
-                sendstringbyet[93] = tbi[0];    //strtohex(tbi.Substring(4, 2));
-                sendstringbyet[94] = tbi[1];      //strtohex(tbi.Substring(6, 2));
-                sendstringbyet[95] = tbi[2];     //strtohex(tbi.Substring(0, 2));
-                sendstringbyet[96] = tbi[3];    //strtohex(tbi.Substring(2, 2));
+                sendstringbyet[93] = tbi[1];    //strtohex(tbi.Substring(4, 2));
+                sendstringbyet[94] = tbi[0];      //strtohex(tbi.Substring(6, 2));
+                sendstringbyet[95] = tbi[3];     //strtohex(tbi.Substring(0, 2));
+                sendstringbyet[96] = tbi[2];    //strtohex(tbi.Substring(2, 2));
                 byte[] tci = BitConverter.GetBytes(ta);
-                sendstringbyet[97] =  tci[0];    //strtohex(tci.Substring(4, 2));
-                sendstringbyet[98] =  tci[1];      //strtohex(tci.Substring(6, 2));
-                sendstringbyet[99] =  tci[2];     //strtohex(tci.Substring(0, 2));
-                sendstringbyet[100] = tci[3];      // strtohex(tci.Substring(2, 2));
+                sendstringbyet[97] =  tci[1];    //strtohex(tci.Substring(4, 2));
+                sendstringbyet[98] =  tci[0];      //strtohex(tci.Substring(6, 2));
+                sendstringbyet[99] =  tci[3];     //strtohex(tci.Substring(0, 2));
+                sendstringbyet[100] = tci[2];      // strtohex(tci.Substring(2, 2));
                 byte[] tpfe = BitConverter.GetBytes(pfe);
-                sendstringbyet[101] = tpfe[0];    // strtohex(tpre.Substring(4, 2));
-                sendstringbyet[102] = tpfe[1];    // strtohex(tpre.Substring(6, 2));
-                sendstringbyet[103] = tpfe[2];    // strtohex(tpre.Substring(0, 2));
-                sendstringbyet[104] = tpfe[3];    // strtohex(tpre.Substring(2, 2));
+                sendstringbyet[101] = tpfe[1];    // strtohex(tpre.Substring(4, 2));
+                sendstringbyet[102] = tpfe[0];    // strtohex(tpre.Substring(6, 2));
+                sendstringbyet[103] = tpfe[3];    // strtohex(tpre.Substring(0, 2));
+                sendstringbyet[104] = tpfe[2];    // strtohex(tpre.Substring(2, 2));
                 sendstringbyet[105] = 0x00;
                 sendstringbyet[106] = 0x03;
                 Byte[] aa = new Byte[2];

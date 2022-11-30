@@ -33,6 +33,7 @@ namespace NanpaoChillerSystemV2.Components
             AbsProtocols = absProtocols;
             SqlMethod = sqlMethod;
             UpToEwatchSetting = upToEwatchSetting;
+            UptoEwatchMethod = new UptoEwatchMethod();
         }
 
         public UpDataComponent(IContainer container)

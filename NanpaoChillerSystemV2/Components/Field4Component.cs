@@ -25,7 +25,7 @@ namespace NanpaoChillerSystemV2.Components
         /// <summary>
         /// 小E上傳
         /// </summary>
-        public UptoEwatchMethod UptoEwatchMethod { get; set; } = new UptoEwatchMethod();
+        public UptoEwatchMethod UptoEwatchMethod { get; set; }
         /// <summary>
         /// Slave資訊
         /// </summary>
